@@ -2,18 +2,18 @@ def main(input: str) -> str:
     parts = input.strip().split()
 
     if len(parts) != 3:
-        raise Exception("Invalid expression format")
+        raise Exception("Недопустимый формат выражения")
 
     a_str, operator, b_str = parts
 
     if not a_str.isdigit() or not b_str.isdigit():
-        raise Exception("Operands must be integers")
+        raise Exception("Операнды должны быть целыми числами")
 
     a = int(a_str)
     b = int(b_str)
 
     if not (1 <= a <= 10 and 1 <= b <= 10):
-        raise Exception("Numbers must be from 1 to 10")
+        raise Exception("Операнды должны быть в диапазоне от 1 до 10")
 
     if operator == "+":
         result = a + b
@@ -24,11 +24,13 @@ def main(input: str) -> str:
     elif operator == "/":
         result = a // b
     else:
-        raise Exception("Invalid operator")
+        raise Exception("Недопустимый оператор")
 
     return str(result)
 
-
 if __name__ == "__main__":
-    user_input = input()
-    print(main(user_input))
+    try:
+        user_input = input()
+        print(main(user_input))
+    except Exception:
+        print("throws Exception")
